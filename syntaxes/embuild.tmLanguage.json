@@ -20,7 +20,8 @@
       			"patterns": [
 				      	{ "include": "#keywords" },
 					{ "include": "#paren-expression" },
-					{ "include": "#strings" }
+					{ "include": "#strings" },
+					{"include": "#vars"}
 				]
     		},
 		"module_headers":{
@@ -75,7 +76,37 @@
       			},
       			"name": "expression.group",
       			"patterns": [{ "include": "#expression" }]
-    		}
+    		},
+		"words":{
+			"patterns": [
+				{"name":"variable","match": "\\$[A-Za-z]\\w*|\\$\\{[A-Za-z]\\w*\\}"}
+			]
+		},
+		"operators":{
+			"patterns": [
+				{"name":"keyword.operator","match": "[=*]"}
+			]
+		},
+		"vars":{
+      			"patterns": [
+					{ "include": "#paren-vars" },
+					{"include": "#words"},
+					{ "include": "#strings" },
+					{"include": "#operators"}
+				]
+		},
+		"paren-vars":{
+			"begin": "\\(",
+			"end": "\\)",
+      			"beginCaptures": {
+        			"0": { "name": "punctuation.paren.open" }
+      			},
+      			"endCaptures": {
+        			"0": { "name": "punctuation.paren.close" }
+      			},
+      			"name": "vars.group",
+      			"patterns": [{ "include": "#vars" }]
+		}
 	},
 	"scopeName": "source.mybuild"
 }
