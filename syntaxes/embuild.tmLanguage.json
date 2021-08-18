@@ -3,18 +3,55 @@
 	"name": "Embuild",
 	"patterns": [
 		{
-			"include": "#keywords"
+			"include": "#expression"
 		},
 		{
-			"include": "#strings"
+			"include": "#headers"
+		},
+		{
+			"include": "#module_headers"
+		},
+		{
+			"include": "#module_functions"
 		}
 	],
 	"repository": {
-		"keywords": {
+		"expression": {
+      			"patterns": [
+				      	{ "include": "#keywords" },
+					{ "include": "#paren-expression" },
+					{ "include": "#strings" }
+				]
+    		},
+		"module_headers":{
 			"patterns": [{
-				"name": "keyword.control.embuild",
-				"match": "\\b(if|while|for|return)\\b"
+				"name":"entity.name.function.embuild",
+				"match":"@\\S*"
 			}]
+		},
+		"headers":{
+			"patterns": [
+				{"name":"keyword.control.package.embuild","match": "\\b(package)\\b"},
+				{"name":"keyword.control.abstract.embuild","match": "\\b(abstract)\\b"},
+				{"name":"keyword.control.module.embuild","match": "\\b(module)\\b"}
+			]	
+		},
+		"module_functions":{
+			"patterns": [
+				{"name":"entity.name.selector.embuild", "match": "\\b(extends)\\b"}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.embuild",
+					"match": "\\b(if|while|for|return)\\b"
+				},
+				{
+					"name":"keyword.operator",
+					"match": "\\b(source|depends)\\b"
+				}
+			]
 		},
 		"strings": {
 			"name": "string.quoted.double.embuild",
@@ -26,7 +63,19 @@
 					"match": "\\\\."
 				}
 			]
-		}
+		},
+		"paren-expression": {
+      			"begin": "\\{",
+      			"end": "\\}",
+      			"beginCaptures": {
+        			"0": { "name": "punctuation.paren.open" }
+      			},
+      			"endCaptures": {
+        			"0": { "name": "punctuation.paren.close" }
+      			},
+      			"name": "expression.group",
+      			"patterns": [{ "include": "#expression" }]
+    		}
 	},
 	"scopeName": "source.mybuild"
 }
