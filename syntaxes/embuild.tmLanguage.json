@@ -12,6 +12,9 @@
 			"include": "#module_headers"
 		},
 		{
+			"include": "#constants-numeric"
+		},
+		{
 			"include": "#module_functions"
 		}
 	],
@@ -46,11 +49,11 @@
 			"patterns": [
 				{
 					"name": "keyword.control.embuild",
-					"match": "\\b(if|while|for|return)\\b"
+					"match": "\\b(false|true)\\b"
 				},
 				{
 					"name":"keyword.operator",
-					"match": "\\b(source|depends)\\b"
+					"match": "\\b(source|depends|option)\\b"
 				}
 			]
 		},
@@ -77,10 +80,11 @@
       			"name": "expression.group",
       			"patterns": [{ "include": "#expression" }]
     		},
-		"words":{
-			"patterns": [
-				{"name":"variable","match": "\\$[A-Za-z]\\w*|\\$\\{[A-Za-z]\\w*\\}"}
-			]
+		"constants-numeric": {
+		      "patterns": [{
+			        "name": "constant.numeric",
+			        "match": "(?<=(\\s|'|/|\\.|\\=))(\\d)(\\d*)"
+		      }]
 		},
 		"operators":{
 			"patterns": [
@@ -90,9 +94,9 @@
 		"vars":{
       			"patterns": [
 					{ "include": "#paren-vars" },
-					{"include": "#words"},
 					{ "include": "#strings" },
-					{"include": "#operators"}
+					{"include": "#operators"},
+					{"include": "#constants-numeric"}
 				]
 		},
 		"paren-vars":{
