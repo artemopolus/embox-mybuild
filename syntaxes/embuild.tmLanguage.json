@@ -24,10 +24,11 @@
 	"repository": {
 		"expression": {
       			"patterns": [
-				      	{ "include": "#keywords" },
-					{ "include": "#paren-expression" },
-					{ "include": "#strings" },
-					{"include": "#vars"}
+				    {"include": "#keywords" },
+					{"include": "#paren-expression" },
+					{"include": "#strings" },
+					{"include": "#vars"},
+					{"include": "#comments"}
 				]
     		},
 		"comments":{
@@ -77,6 +78,7 @@
 			]
 		},
 		"paren-expression": {
+				"name": "expression.group",
       			"begin": "\\{",
       			"end": "\\}",
       			"beginCaptures": {
@@ -85,7 +87,6 @@
       			"endCaptures": {
         			"0": { "name": "punctuation.paren.close" }
       			},
-      			"name": "expression.group",
       			"patterns": [{ "include": "#expression" }]
     		},
 		"constants-numeric": {
@@ -119,6 +120,12 @@
       			},
       			"name": "vars.group",
       			"patterns": [{ "include": "#vars" }]
+		},
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.double-slash.embuild",
+				"match": "//.*"
+			}]
 		}
 	},
 	"scopeName": "source.mybuild"
