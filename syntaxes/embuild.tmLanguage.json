@@ -31,11 +31,6 @@
 					{"include": "#comments"}
 				]
     		},
-		"comments":{
-			"patterns": [
-				{"name":"comment.line","match": "\/\/.*"}
-			]
-		},
 		"module_headers":{
 			"patterns": [{
 				"name":"entity.name.function.embuild",
