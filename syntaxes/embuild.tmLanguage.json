@@ -31,12 +31,6 @@
 					{"include": "#comments"}
 				]
     		},
-		"module_headers":{
-			"patterns": [{
-				"name":"entity.name.function.embuild",
-				"match":"@\\S*"
-			}]
-		},
 		"headers":{
 			"patterns": [
 				{"name":"keyword.control.package.embuild","match": "\\b(package)\\b"},
@@ -121,6 +115,26 @@
 				"name": "comment.line.double-slash.embuild",
 				"match": "//.*"
 			}]
+		},
+		"module_headers": {
+			"name": "meta.function.SolidcamGPP",
+			"begin": "@.*\\S",
+			"beginCaptures": {
+				"0": { 
+					"patterns": [{
+						"name": "entity.name.tag",
+						"match": "@"
+					},
+					{
+						"name": "entity.name.function.embuild",
+						"match": "[^@]*(?=\\()|[^@]*(?<!\\))$"
+					}]
+				 }
+			  },
+			"end": "\\s",
+			"endCaptures": {
+				"0": { "name": "entity.name.tag"}
+			  }
 		}
 	},
 	"scopeName": "source.mybuild"
