@@ -16,6 +16,9 @@
 		},
 		{
 			"include": "#module_functions"
+		},
+		{
+			"include": "#comments"
 		}
 	],
 	"repository": {
@@ -27,6 +30,11 @@
 					{"include": "#vars"}
 				]
     		},
+		"comments":{
+			"patterns": [
+				{"name":"comment.line","match": "\/\/.*"}
+			]
+		},
 		"module_headers":{
 			"patterns": [{
 				"name":"entity.name.function.embuild",
@@ -96,6 +104,7 @@
 					{ "include": "#paren-vars" },
 					{ "include": "#strings" },
 					{"include": "#operators"},
+					{"include": "#comments"},
 					{"include": "#constants-numeric"}
 				]
 		},
