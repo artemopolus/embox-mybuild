@@ -1,0 +1,25 @@
+{
+    "name": "embox-mybuild",
+    "displayName": "embox mybuild",
+    "description": "Syntax highlight for embox mybuild",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.59.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "embuild",
+            "aliases": ["Embuild", "embuild"],
+            "extensions": [".my","Mybuild"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "embuild",
+            "scopeName": "source.mybuild",
+            "path": "./syntaxes/embuild.tmLanguage.json"
+        }]
+    }
+}
