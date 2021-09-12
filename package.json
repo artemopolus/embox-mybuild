@@ -10,7 +10,8 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:helloworld.helloWorld"
+		"onCommand:helloworld.helloWorld",
+		"onLanguage:embuild"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -19,7 +20,19 @@
 				"command": "helloworld.helloWorld",
 				"title": "Hello World"
 			}
-		]
+		],
+		"languages": [{
+            "id": "embuild",
+            "aliases": ["Embuild", "embuild"],
+            "extensions": [".my"],
+            "configuration": "./language-configuration.json",
+			"filenames": ["Mybuild"]
+        }],
+        "grammars": [{
+            "language": "embuild",
+            "scopeName": "source.mybuild",
+            "path": "./syntaxes/embuild.tmLanguage.json"
+        }]	
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

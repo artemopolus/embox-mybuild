@@ -18,7 +18,7 @@ function activate(context) {
         // Display a message box to the user
         vscode.window.showInformationMessage('Hello World from HelloWorld!');
     });
-    const provider2 = vscode.languages.registerCompletionItemProvider('plaintext', {
+    const provider2 = vscode.languages.registerCompletionItemProvider('embuild', {
         provideCompletionItems(document, position) {
             // get all text until the `position` and check if it reads `console.`
             // and if so then complete if `log`, `warn`, and `error`

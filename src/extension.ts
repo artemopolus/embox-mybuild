@@ -20,7 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	const provider2 = vscode.languages.registerCompletionItemProvider(
-		'plaintext',
+		'embuild',
 		{
 			provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
 
