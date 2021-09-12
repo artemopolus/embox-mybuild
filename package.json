@@ -1,6 +1,6 @@
 {
-	"name": "helloworld",
-	"displayName": "HelloWorld",
+	"name": "embox-mybuild",
+	"displayName": "EmboxMybuild",
 	"description": "",
 	"version": "0.0.1",
 	"engines": {
@@ -24,9 +24,8 @@
 		"languages": [{
             "id": "embuild",
             "aliases": ["Embuild", "embuild"],
-            "extensions": [".my"],
+            "extensions": [".my","Mybuild"],
             "configuration": "./language-configuration.json",
-			"filenames": ["Mybuild"]
         }],
         "grammars": [{
             "language": "embuild",

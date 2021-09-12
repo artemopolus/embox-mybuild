@@ -65,6 +65,11 @@ function activate(context) {
                 'depends',
                 'depends @NoRuntime'
             ];
+            dependsnames.forEach(function (name) {
+                const smplcomplete = new vscode.CompletionItem(name);
+                smplcomplete.insertText = name + ' ';
+                completeitems.push(smplcomplete);
+            });
             return completeitems;
         }
     }, '.' // triggered whenever a '.' is being typed
