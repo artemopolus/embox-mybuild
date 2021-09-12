@@ -23,9 +23,10 @@
 		],
 		"languages": [{
             "id": "embuild",
-            "aliases": ["Embuild", "embuild"],
-            "extensions": [".my","Mybuild"],
-            "configuration": "./language-configuration.json",
+            "aliases": ["Embuild", "emboxmybuild"],
+            "extensions": [".my"],
+			"filenames": ["Mybuild"],
+            "configuration": "./language-configuration.json"
         }],
         "grammars": [{
             "language": "embuild",
