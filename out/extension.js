@@ -20,17 +20,52 @@ function activate(context) {
     });
     const provider2 = vscode.languages.registerCompletionItemProvider('embuild', {
         provideCompletionItems(document, position) {
-            // get all text until the `position` and check if it reads `console.`
-            // and if so then complete if `log`, `warn`, and `error`
-            const linePrefix = document.lineAt(position).text.substr(0, position.character);
-            if (!linePrefix.endsWith('console.')) {
-                return undefined;
-            }
-            return [
-                new vscode.CompletionItem('log', vscode.CompletionItemKind.Method),
-                new vscode.CompletionItem('warn', vscode.CompletionItemKind.Method),
-                new vscode.CompletionItem('error', vscode.CompletionItemKind.Method),
+            let completeitems = [];
+            const predefnames = [
+                'abstract',
+                'module',
+                'static',
+                'source'
             ];
+            predefnames.forEach(function (name) {
+                const smplcomplete = new vscode.CompletionItem(name);
+                smplcomplete.insertText = name + ' ';
+                completeitems.push(smplcomplete);
+            });
+            const adnames = [
+                'App',
+                'Cmd',
+                'AutoCmd',
+                'Build',
+                'BuildArtifactPath',
+                'BuildDepends',
+                'DefaultImpl',
+                'LinkerSection',
+                'AddPrefix',
+                'IncludeExport',
+                'InitFS',
+                'Genereted'
+            ];
+            adnames.forEach(function (name) {
+                const defname = '@' + name;
+                const smplcomplete = new vscode.CompletionItem(defname);
+                smplcomplete.insertText = defname + ' ';
+                if (name === 'IncludeExport') {
+                    smplcomplete.insertText = new vscode.SnippetString(defname + '(path="${1}")');
+                    smplcomplete.documentation = new vscode.MarkdownString("Insert path to header");
+                }
+                else if (name === 'Cmd') {
+                    smplcomplete.insertText = new vscode.SnippetString(defname +
+                        "(name=\"${1}\", help=\"${2}\", man=\'\'\'\n${3}\n\'\'\')");
+                    smplcomplete.documentation = new vscode.MarkdownString("You can specify name, help and man");
+                }
+                completeitems.push(smplcomplete);
+            });
+            const dependsnames = [
+                'depends',
+                'depends @NoRuntime'
+            ];
+            return completeitems;
         }
     }, '.' // triggered whenever a '.' is being typed
     );
