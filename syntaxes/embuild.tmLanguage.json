@@ -35,6 +35,7 @@
 			"patterns": [
 				{"name":"keyword.control.package.embuild","match": "\\b(package)\\b"},
 				{"name":"keyword.control.abstract.embuild","match": "\\b(abstract)\\b"},
+				{"name":"keyword.control.abstract.embuild","match": "\\b(configuration)\\b"},
 				{"name":"keyword.control.module.embuild","match": "\\b(module)\\b"}
 			]	
 		},
@@ -51,7 +52,11 @@
 				},
 				{
 					"name":"keyword.operator",
-					"match": "\\b(source|depends|option)\\b"
+					"match": "\\b(source|depends|option|include)\\b"
+				},
+				{
+					"name":"keyword.opertor.embuild",
+					"match": "\\b(Runlevel|IncludeExport)\\b"
 				}
 			]
 		},
