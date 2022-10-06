@@ -13,7 +13,7 @@
         "languages": [{
             "id": "embuild",
             "aliases": ["Embuild", "embuild"],
-            "extensions": [".my","Mybuild"],
+            "extensions": [".my","Mybuild", "mods.conf"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
